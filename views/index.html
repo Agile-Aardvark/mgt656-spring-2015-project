@@ -3,14 +3,44 @@
 {% extends "layout.html" %}
 
 {% block header %}
+<head>
+  <style>
+      header {
+        text-align: center;
+        background: black;
+        color: white;
+      }
+      h1 {
+        font-size: 70px;
+        font-family: helvetica;
+      }
+      img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        border: 7px solid white;
+        border-radius: 20px;
+      }
+      body {
+        background: black;
+        background-size: cover;
+        color: white;
+        font-family: helvetica;
+      }
+    </style>
+</head>
   <header>
-    <h1>{{ title }} FTW</h1>
+    <h1>{{ title }}</h1>
+    <a href="views/index.html">Home</a>
+    <a href="views/about.html">About Us</a>
+    <a href="views/create-event.html">Create a New Event</a>
   </header>
 {% endblock %}
 
 {% block mainContent %}
+<body>
+  <img src="http://s5.postimg.org/q5kair3fb/Aardvark_Logo_small.png">
   <p>
-    <img src="http://s5.postimg.org/q5kair3fb/Aardvark_Logo_small.png">
     Welcome to the {{ title }} page. {{tagline}}
   </p>
   <p>Here is our list of events:</p>
@@ -24,6 +54,7 @@
   <p>
     <a id="new" href="/events/new">Create a new event</a>
   </p>
+  </body>
 {% endblock %}
 <footer></footer>
 </html>
