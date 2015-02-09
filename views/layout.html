@@ -16,6 +16,10 @@
         border: 7px solid white;
         border-radius: 20px;
       }
+      footer {
+        text-align: center;
+        display: inline;
+      }
     </style>
   </head>
 
@@ -23,11 +27,7 @@
 
     {% block header %}
       <header>
-      <ul>
-      <li><a href="/">Home</a></li>
-      <li><a href="/about">About Us</a></li>   
-      <li><a href="/events/new">Create a New Event</a></li>
-      </ul>
+      
       </header>
     {% endblock %}
 
@@ -36,7 +36,13 @@
     {% endblock %}
 
     {% block footer %}
-      <footer>The Agile Aardvarks are: Ali, Ashlee, and Eric.</footer>
+      <footer>
+        <p>
+        <a href="/">Home</a>    
+        <a href="/about">About Us</a>   
+        <a href="/events/new">Create a New Event</a>
+        </p>
+      </footer>
     {% endblock %}
 
   </body>
