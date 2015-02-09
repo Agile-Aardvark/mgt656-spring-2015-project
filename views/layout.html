@@ -4,12 +4,29 @@
     <title>{{ title }}</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <link rel='stylesheet' href='//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css' />
+    <style>
+      header {
+        text-align: center;
+      }
+      h1 {
+        font-size: 70px;
+      }
+      img {
+        margin: 40px 0px 0px 0px;
+        border: 7px solid white;
+        border-radius: 20px;
+      }
+    </style>
   </head>
 
 	<body class="container">
 
     {% block header %}
-      <header>Hey, I'm in the header</header>
+      <header>
+      <a href="views/index.html">Home</a>
+      <a href="views/about.html">About Us</a>
+      <a href="views/create-event.html">Create a New Event</a>
+      </header>
     {% endblock %}
 
     {% block mainContent %}
@@ -17,7 +34,7 @@
     {% endblock %}
 
     {% block footer %}
-      <footer>This be the footer.</footer>
+      <footer>The Agile Aardvarks are: Ali, Ashlee, and Eric.</footer>
     {% endblock %}
 
   </body>

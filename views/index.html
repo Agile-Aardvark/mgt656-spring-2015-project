@@ -3,16 +3,55 @@
 {% extends "layout.html" %}
 
 {% block header %}
+<head>
+  <style>
+      header {
+        text-align: center;
+        background: black;
+        color: white;
+      }
+      h1 {
+        font-size: 70px;
+        font-family: helvetica;
+      }
+      img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        border: 7px solid white;
+        border-radius: 20px;
+      }
+      body {
+        background: black;
+        background-size: cover;
+        color: white;
+        font-family: helvetica;
+      }
+    </style>
+</head>
   <header>
-    <h1>{{ title }} FTW</h1>
+    <h1>{{ title }}</h1>
+    <a href="views/index.html">Home</a>
+    <a href="views/about.html">About Us</a>
+    <a href="views/create-event.html">Create a New Event</a>
   </header>
 {% endblock %}
 
 {% block mainContent %}
+<body>
+  <img src="http://s5.postimg.org/q5kair3fb/Aardvark_Logo_small.png">
   <p>
+<<<<<<< HEAD
     <img src="http://s5.postimg.org/q5kair3fb/Aardvark_Logo_small.png">
     Ashlee's test. Welcome to the {{ title }} page. {{tagline}}
+=======
+    Welcome to the {{ title }} page. {{tagline}}
+>>>>>>> 3303a2d68c1c16fe335374c5b3542572de48e5ed
   </p>
+  <p>Here is our list of events:</p>
+  <div>
+    {% include "fragments/events-list.html" %}
+  </div>
   <p>
     Check out the <a href="/about">About us</a> page
     as well as the <a href="/events">Events</a> page.
@@ -20,6 +59,7 @@
   <p>
     <a id="new" href="/events/new">Create a new event</a>
   </p>
+  </body>
 {% endblock %}
 <footer></footer>
 </html>
