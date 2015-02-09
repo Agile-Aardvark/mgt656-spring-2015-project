@@ -14,6 +14,13 @@
         font-size: 70px;
         font-family: helvetica;
       }
+      ul {
+        padding: 10px;
+      }
+      li {
+        display: inline;
+        padding: 0px 10px 0px 10px;
+      }
       img {
         display: block;
         margin-left: auto;
@@ -31,9 +38,11 @@
 </head>
   <header>
     <h1>{{ title }}</h1>
-    <a href="/index">Home</a>   
-    <a href="/about">About Us</a>   
-    <a id="new" href="/events/new">Create a New Event</a>
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/about">About Us</a></li>   
+      <li><a href="/events/new">Create a New Event</a></li>
+    </ul>
   </header>
 {% endblock %}
 
