@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+{% extends "layout.html" %}
+<header></header>
+{% block mainContent %}
+
+  {% if errors %}
+    <div class="form-errors">
+      <p>Please correct the following errors!</p>
+      <ul>
+        {% for error in errors %}
+          <li>{{error}}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  {% endif %}
+
+	<form id="create-event" method="POST">
+    <label for="title">Event Title:</label>
+    <input type="text" name="title">
+    <p></p>
+    
+    <label for="location">Event Location:</label>
+    <input type="text" name="location">
+    <p></p>
+    
+    <label for="image">Event Image:</label>
+    <input type="text" name="image">
+    <p></p>
+    
+    <label for="year">Event Year:</label>
+    <input type="text" name="year">
+    <p></p>
+    
+    <label for="month">Event Month:</label>
+    <input type="text" name="month">
+    <p></p>
+    
+    <label for="day">Event Day:</label>
+    <input type="text" name="day">
+    <p></p>
+    
+    <label for="hour">Event Hour:</label>
+    <input type="text" name="hour">
+    <p></p>
+    
+    <label for="minute">Event Minute:</label>
+    <input type="text" name="minute">
+    <p></p>
+    <!--title, location, image, year, month, day, hour, and minute-->
+  </form>
+  Soon there will be a Submit button! For now, just pretend. 
+{% endblock %}
+<footer></footer>
+</html>
+
