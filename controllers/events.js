@@ -78,6 +78,9 @@ function saveEvent(request, response){
   if (request.body.image.substring(0,6) !== 'http://' || request.body.image.substring(0,7) !== 'https://') {
     contextData.errors.push('Please put in the full URL starting with either http:// or https://.');
   }
+  if (request.body.image.indexOf('.gif') !== request.body.image.length -4 || request.body.image.indexOf('.png') !== request.body.image.length -4) {
+    contextData.errors.push('Please use either a .gif or .png file.');
+  }
   
   if (contextData.errors.length === 0) {
     var newEvent = {
