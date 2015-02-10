@@ -9,7 +9,7 @@ function index (request, response) {
   var contextData = {
     'title': 'Agile Aardvarks',
     'tagline': 'We can do it!',
-    'events': events.all
+    'events': events.all,
   };
   response.render('index.html', contextData);
 }
