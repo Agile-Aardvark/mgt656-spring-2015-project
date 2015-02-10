@@ -26,7 +26,8 @@ var allowedDateInfo = {
   hours: [
     0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11,
     12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23
-  ]
+  ],
+  year: [2015, 2016]
 };
 
 /**
@@ -63,6 +64,19 @@ function saveEvent(request, response){
   
   if (validator.isLength(request.body.location, 5, 50) === false) {
     contextData.errors.push('Your location should be between 5 and 50 letters.');
+  }
+  
+  if (request.body.year < 2015) {
+    contextData.errors.push('Your event must be this year (2015) or next (2016).');
+  }
+  if (request.body.year > 2016) {
+    contextData.errors.push('Your event must be this year (2015) or next (2016).');
+  }
+  if (request.body.year % 1 !== 0) {
+    contextData.errors.push('Your event must be this year (2015) or next (2016).');
+  }
+  if (request.body.image.substring(0,6) !== 'http://' || request.body.image.substring(0,7) !== 'https://') {
+    contextData.errors.push('Please put in the full URL starting with either http:// or https://.');
   }
   
   if (contextData.errors.length === 0) {
