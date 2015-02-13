@@ -86,8 +86,8 @@ var minute = checkIntRange(request, 'minute', 0, 59, contextData);
   if (validator.isURL(request.body.image) === false) {
     contextData.errors.push('Please put in the full URL starting with either http:// or https://.');
   }
-  if (request.body.image.indexOf('.gif') !== request.body.image.length -4 || request.body.image.indexOf('.png') !== request.body.image.length -4) {
-    contextData.errors.push('Please use either a .gif or .png file.');
+  if (request.body.image.match(/\.png$/ || /\.gif$/) === false) {
+    contextData.errors.push('Please use a .png or .gif file');
   }
   
   if (contextData.errors.length === 0) {
