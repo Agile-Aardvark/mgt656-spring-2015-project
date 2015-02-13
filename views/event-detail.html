@@ -9,8 +9,8 @@
   <img id="image" src={{event.image}}>
   <p>Attendees:</p>
   <ul id="attendees">
-    {% for event in events %}
-    <li>{{event.attending}}</li>
+    {% for person in event.attending %}
+    <li>{{person}}</li>
     {% endfor %}
   </ul>
   
