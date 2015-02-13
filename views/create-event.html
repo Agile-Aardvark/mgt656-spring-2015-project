@@ -29,11 +29,19 @@
     <p></p>
     
     <label for="year">Event Year:</label>
-    <input type="text" name="year">
+    <select name="year">
+      {% for year in allowedDateInfo.year %}
+        <option value="{{year}}">{{year}}</option>
+      {% endfor %}
+    </select>
     <p></p>
     
     <label for="month">Event Month:</label>
-    <input type="text" name="month">
+    <select name="month">
+      {% for monthNumber, monthName in allowedDateInfo.months %}
+        <option value="{{monthNumber}}">{{monthName}}</option>
+      {% endfor %}
+    </select>
     <p></p>
     
     <label for="day">Event Day:</label>
