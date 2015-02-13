@@ -50,6 +50,19 @@ function newEvent(request, response){
   response.render('create-event.html', contextData);
 }
 
+function checkIntRange(request, fieldName, minVal, maxVal, contextData){
+  var value = null;
+  if (validator.isInt(request.body[fieldName]) === false) {
+    contextData.errors.push('Your ' + fieldName + ' must be a whole number');
+  }else{
+  value = parseInt(request.body.year, 10);
+  if (value > maxVal || value < minVal){
+    contextData.errors.push('Your ' + fieldName + ' must be the range of ' + minVal + ' to ' + maxVal);
+  }
+  }
+return value;
+}
+
 /**
  * Controller to which new events are submitted.
  * Validates the form and adds the new event to
@@ -61,21 +74,16 @@ function saveEvent(request, response){
   if (validator.isLength(request.body.title, 5, 50) === false) {
     contextData.errors.push('Your title should be between 5 and 50 letters.');
   }
-  
   if (validator.isLength(request.body.location, 5, 50) === false) {
     contextData.errors.push('Your location should be between 5 and 50 letters.');
   }
-  
-  if (request.body.year < 2015) {
-    contextData.errors.push('Your event must be this year (2015) or next (2016).');
-  }
-  if (request.body.year > 2016) {
-    contextData.errors.push('Your event must be this year (2015) or next (2016).');
-  }
-  if (request.body.year % 1 !== 0) {
-    contextData.errors.push('Your event must be this year (2015) or next (2016).');
-  }
-  if (request.body.image.substring(0,6) !== 'http://' || request.body.image.substring(0,7) !== 'https://') {
+var year = checkIntRange(request, 'year', 2015, 2016, contextData);
+var month = checkIntRange(request, 'month', 0, 11, contextData);
+var day = checkIntRange(request, 'day', 1, 31, contextData);
+var hour = checkIntRange(request, 'hour', 0, 23, contextData);
+var minute = checkIntRange(request, 'minute', 0, 59, contextData);
+
+  if (validator.isURL(request.body.image) === false) {
     contextData.errors.push('Please put in the full URL starting with either http:// or https://.');
   }
   if (request.body.image.indexOf('.gif') !== request.body.image.length -4 || request.body.image.indexOf('.png') !== request.body.image.length -4) {
