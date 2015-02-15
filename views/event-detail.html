@@ -3,10 +3,15 @@
 <header>Event Detail Page</header>
 
 {% block mainContent %}
+  <style>
+    h1 {
+      font-size: 50px;
+    }
+  </style>
   <h1 id="title">{{event.title}}</h1>
   <p>Date: <span id="date">{{event.date|prettyDate}}</span></p>
   <p>Location: <span id="location">{{event.location}}</span></p>
-  <img id="image" src={{event.image}}>
+  <p></p><img id="image" src={{event.image}}>
   <p>Attendees:</p>
   <ul id="attendees">
     {% for person in event.attending %}

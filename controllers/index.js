@@ -8,8 +8,8 @@ var events = require('../models/events');
 function index (request, response) {
   var now = new Date();
   var contextData = {
-    'title': 'Agile Aardvarks',
-    'tagline': 'We can do it!',
+    'title': 'Agile Aardvarks Events',
+    'tagline': 'Wanna party?',
     'events': [],
   };
   for(var i=0; i < events.all.length; i++){

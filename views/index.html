@@ -5,30 +5,12 @@
 {% block header %}
 <head>
   <style>
-      header {
-        text-align: center;
-        background: black;
-        color: white;
-      }
-      h1 {
-        font-size: 70px;
-        font-family: helvetica;
-      }
       img {
         display: block;
         margin-left: auto;
         margin-right: auto;
         border: 7px solid white;
         border-radius: 20px;
-      }
-      body {
-        background: black;
-        background-size: cover;
-        color: white;
-        font-family: helvetica;
-      }
-      footer {
-        display: inline;
       }
     </style>
 </head>
@@ -40,21 +22,21 @@
 {% block mainContent %}
 <body>
   <img id="logo" src="http://s5.postimg.org/q5kair3fb/Aardvark_Logo_small.png">
-  <p>
-Welcome to the {{ title }} page. {{tagline}}
-  </p>
+  <h2>
+    {{tagline}}
+  </h2>
   <p>Here is our list of events:</p>
   <div>
     {% include "fragments/events-list.html" %}
   </div>
   <p>
-    Check out the <a href="/about">About us</a> page
-    as well as the <a href="/events">Events</a> page.
+    Check out the <a href="/about">About Us</a> page to meet the Agile Aardvarks
+    and the <a href="/events">Events</a> page to get your party on.
   </p>
-  <p>
-    <a id="new" href="/events/new">Create a new event</a>
+  <p>Can't find the party for you?
+    <a id="new" href="/events/new">Create a new event!</a>
   </p>
-  <p><a href="/donate" class="donation">Donate</p>
+  <p>Feeling generous? <a href="/donate" class="donation">Donate!</p>
   </body>
 {% endblock %}
 <footer>
