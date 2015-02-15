@@ -121,12 +121,12 @@ function rsvp (request, response){
     response.status(404).send('No such event');
   }
 
-  if(validator.isEmail(request.body.email)){
+  if(validator.isEmail(request.body.email) && request.body.email.toLowerCase().indexOf('@yale.edu') !== -1){
     ev.attending.push(request.body.email);
     response.redirect('/events/' + ev.id);
   }else{
     var contextData = {errors: [], event: ev};
-    contextData.errors.push('Invalid email');
+    contextData.errors.push('Bro, this event is VIP. Yale.edu emails only!');
     response.render('event-detail.html', contextData);    
   }
 
