@@ -2,6 +2,7 @@
 
 var events = require('../models/events');
 var validator = require('validator');
+var lodash = require('lodash');
 
 // Date data that would be useful to you
 // completing the project These data are not
@@ -27,7 +28,8 @@ var allowedDateInfo = {
     0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11,
     12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23
   ],
-  year: [2015, 2016]
+  year: [2015, 2016],
+  days: lodash.range(1, 32)
 };
 
 /**
@@ -71,7 +73,7 @@ return value;
  * our global list of events.
  */
 function saveEvent(request, response){
-  var contextData = {errors: []};
+  var contextData = {errors: [], allowedDateInfo: allowedDateInfo};
 
   if (validator.isLength(request.body.title, 5, 50) === false) {
     contextData.errors.push('Your title should be between 5 and 50 letters.');
@@ -94,14 +96,16 @@ var minute = checkIntRange(request, 'minute', 0, 59, contextData);
   
   if (contextData.errors.length === 0) {
     var newEvent = {
+      id: events.getMaxId() + 1,
       title: request.body.title,
       location: request.body.location,
       image: request.body.image,
       date: new Date(),
       attending: []
+      
     };
     events.all.push(newEvent);
-    response.redirect('/events');
+    response.redirect('/events/' + newEvent.id);
   }else{
     response.render('create-event.html', contextData);
   }
