@@ -35,7 +35,6 @@
       {% endfor %}
     </select>
     <p></p>
-    
     <label for="month">Event Month:</label>
     <select name="month">
       {% for monthNumber, monthName in allowedDateInfo.months %}
@@ -49,15 +48,24 @@
     <p></p>
     
     <label for="hour">Event Hour:</label>
-    <input type="text" name="hour">
+    <select name="hour">
+      {% for hours in allowedDateInfo.hours %}
+        <option value="{{hours}}">{{hours}}</option>
+      {% endfor %}
+    </select>
     <p></p>
     
     <label for="minute">Event Minute:</label>
-    <input type="text" name="minute">
+      <select name="minute">
+      {% for minutes in allowedDateInfo.minutes %}
+        <option value="{{minutes}}">{{minutes}}</option>
+      {% endfor %}
+      </select>
+    <p></p>
+    <input type="submit" name="submit" id="submit">
     <p></p>
     <!--title, location, image, year, month, day, hour, and minute-->
   </form>
-  Soon there will be a Submit button! For now, just pretend. 
 {% endblock %}
 <footer></footer>
 </html>
