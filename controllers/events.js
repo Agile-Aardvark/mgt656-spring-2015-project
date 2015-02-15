@@ -46,7 +46,9 @@ function listEvents(request, response) {
  * Controller that renders a page for creating new events.
  */
 function newEvent(request, response){
-  var contextData = {};
+  var contextData = {
+    allowedDateInfo: allowedDateInfo
+  };
   response.render('create-event.html', contextData);
 }
 
