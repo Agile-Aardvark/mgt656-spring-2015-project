@@ -45,7 +45,11 @@
     <p></p>
     
     <label for="day">Event Day:</label>
-    <input type="text" name="day">
+    <select name="day">
+      {% for days in allowedDateInfo.days %}
+        <option value="{{days}}">{{days}}</option>
+      {% endfor %}
+      </select>
     <p></p>
     
     <label for="hour">Event Hour:</label>
