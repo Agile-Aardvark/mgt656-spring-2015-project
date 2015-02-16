@@ -56,9 +56,9 @@
         {% for monthNumber, monthName in allowedDateInfo.months %}
           <option value="{{monthNumber}}">{{monthName}}</option>
         {% endfor %}
-      </div>
-    </div>
     </select>
+    </div>
+  </div>
     <div class="form-group">
       <label for="day" class="col-lg-2 control-label">Event Day:</label>
       <div class="col-lg-10">
@@ -66,9 +66,9 @@
         {% for days in allowedDateInfo.days %}
           <option value="{{days}}">{{days}}</option>
         {% endfor %}
-      </select> 
-      </div>
-    </div>  
+    </select> 
+  </div>
+  </div>
     <div class="form-group">
     <label for="hour" class="col-lg-2 control-label">Event Hour:</label>
       <div class="col-lg-10">
@@ -76,9 +76,9 @@
         {% for hours in allowedDateInfo.hours %}
           <option value="{{hours}}">{{hours}}</option>
         {% endfor %}
-        </select>
       </div>
-    </div>
+      </div>
+    </select>
     <div class="form-group">
     <label for="minute" class="col-lg-2 control-label">Event Minute:</label>
       <div class="col-lg-10">
@@ -86,11 +86,11 @@
         {% for minutes in allowedDateInfo.minutes %}
           <option value="{{minutes}}">{{minutes}}</option>
         {% endfor %}
-        </select>
+      </select>
       </div>
-    </div>  
+    </div>
     <p></p>
-    <div class="form-group">
+  <div class="form-group">
       <div class="col-lg-10">
         <button type="reset" class="btn btn-default">Cancel</button>
         <button type="submit" class="btn btn-primary">Submit</button>
