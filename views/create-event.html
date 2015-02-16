@@ -3,7 +3,6 @@
 {% extends "layout.html" %}
 
 {% block mainContent %}
-<h2>It's your party, you can cry if you want to</h2>
 
   {% if errors %}
     <div class="form-errors">
@@ -16,60 +15,88 @@
     </div>
   {% endif %}
 
-	<form id="create-event" method="POST">
-    <label for="title">Event Title:</label>
-    <input type="text" name="title">
+<form class="form-horizontal" id="create-event" method="POST">
+  <fieldset>
+    <legend>Create New Event</legend>
+    <p>It's your party, you can cry if you want to.</p>
     <p></p>
-    
-    <label for="location">Event Location:</label>
-    <input type="text" name="location">
     <p></p>
-    
-    <label for="image">Event Image:</label>
-    <input type="text" name="image">
-    <p></p>
-    
-    <label for="year">Event Year:</label>
-    <select name="year">
-      {% for year in allowedDateInfo.years %}
-        <option value="{{year}}">{{year}}</option>
-      {% endfor %}
-    </select>
-    <p></p>
-    <label for="month">Event Month:</label>
-    <select name="month">
-      {% for monthNumber, monthName in allowedDateInfo.months %}
-        <option value="{{monthNumber}}">{{monthName}}</option>
-      {% endfor %}
-    </select>
-    <p></p>
-    
-    <label for="day">Event Day:</label>
-    <select name="day">
-      {% for days in allowedDateInfo.days %}
-        <option value="{{days}}">{{days}}</option>
-      {% endfor %}
+    <div class="form-group">
+      <label for="title" class="col-lg-2 control-label">Event Title:</label>
+      <div class="col-lg-10"> 
+      <input type="text" name="title">
+      </div>
+    </div> 
+    <div class="form-group">
+        <label for="location" class="col-lg-2 control-label">Event Location:</label>
+        <div class="col-lg-10"> 
+        <input type="text" name="location">
+        </div>  
+    </div>
+    <div class="form-group">
+      <label for="image" class="col-lg-2 control-label">Event Image:</label>
+      <div class="col-lg-10"> 
+      <input type="text" name="image">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="year" class="col-lg-2 control-label">Event Year:</label>
+      <div class="col-lg-10"> 
+      <select name="year">
+        {% for year in allowedDateInfo.years %}
+          <option value="{{year}}">{{year}}</option>
+        {% endfor %}
       </select>
-    <p></p>
-    
-    <label for="hour">Event Hour:</label>
-    <select name="hour">
-      {% for hours in allowedDateInfo.hours %}
-        <option value="{{hours}}">{{hours}}</option>
-      {% endfor %}
+      </div>
+    </div>
+    <div class="form-group">
+    <label for="month" class="col-lg-2 control-label">Event Month:</label>
+      <div class="col-lg-10"> 
+      <select name="month">
+        {% for monthNumber, monthName in allowedDateInfo.months %}
+          <option value="{{monthNumber}}">{{monthName}}</option>
+        {% endfor %}
+      </div>
+    </div>
     </select>
+    <div class="form-group">
+      <label for="day" class="col-lg-2 control-label">Event Day:</label>
+      <div class="col-lg-10">
+      <select name="day">
+        {% for days in allowedDateInfo.days %}
+          <option value="{{days}}">{{days}}</option>
+        {% endfor %}
+      </select> 
+      </div>
+    </div>  
+    <div class="form-group">
+    <label for="hour" class="col-lg-2 control-label">Event Hour:</label>
+      <div class="col-lg-10">
+        <select name="hour">
+        {% for hours in allowedDateInfo.hours %}
+          <option value="{{hours}}">{{hours}}</option>
+        {% endfor %}
+        </select>
+      </div>
+    </div>
+    <div class="form-group">
+    <label for="minute" class="col-lg-2 control-label">Event Minute:</label>
+      <div class="col-lg-10">
+        <select name="minute">
+        {% for minutes in allowedDateInfo.minutes %}
+          <option value="{{minutes}}">{{minutes}}</option>
+        {% endfor %}
+        </select>
+      </div>
+    </div>  
     <p></p>
-    
-    <label for="minute">Event Minute:</label>
-      <select name="minute">
-      {% for minutes in allowedDateInfo.minutes %}
-        <option value="{{minutes}}">{{minutes}}</option>
-      {% endfor %}
-      </select>
-    <p></p>
-    <input type="submit" name="submit" id="submit">
-    <p></p>
-    <!--title, location, image, year, month, day, hour, and minute-->
+    <div class="form-group">
+      <div class="col-lg-10">
+        <button type="reset" class="btn btn-default">Cancel</button>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </div>
+    </fieldset>
   </form>
 {% endblock %}
 <footer></footer>
