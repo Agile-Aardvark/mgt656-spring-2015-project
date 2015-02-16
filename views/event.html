@@ -2,21 +2,25 @@
 <html>
   <header></header>
 {% extends "layout.html" %}
-
 {% block mainContent %}
+<h2>Here is our list of events:</h2>
   <div>
     {% include "fragments/events-list.html" %}
   </div>
   <div>
-    <a href="/events/new">Create a new event</a>
+    <p>Can't find the party for you? <a href="/events/new">Create a new event!</a>
+    </p>
   </div>
-
+<p></p>
 {% endblock %}
 
 {% block footer %}
   <footer>
-    The time is now {{time}}.
-    <a href="/">Home</a><a href="/about">About us</a> <a href="/donate" class="donation">Donate</a>.
+    <p>
+      <a href="/">Home</a>    
+      <a href="/about">About Us</a>   
+      <a href="/donate" class="donation">Donate</a>
+    </p>
   </footer>
 {% endblock %}
 </html>
