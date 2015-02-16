@@ -28,7 +28,7 @@ var allowedDateInfo = {
     0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11,
     12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23
   ],
-  year: [2015, 2016],
+  years: [2015, 2016],
   days: lodash.range(1, 32)
 };
 
@@ -54,17 +54,14 @@ function newEvent(request, response){
   response.render('create-event.html', contextData);
 }
 
-function checkIntRange(request, fieldName, minVal, maxVal, contextData){
-  var value = null;
-  if (validator.isInt(request.body[fieldName]) === false) {
-    contextData.errors.push('Your ' + fieldName + ' must be a whole number');
-  }else{
-  value = parseInt(request.body.year, 10);
-  if (value > maxVal || value < minVal){
-    contextData.errors.push('Your ' + fieldName + ' must be the range of ' + minVal + ' to ' + maxVal);
+function isRangedInt(number, name, min, max, errors){
+  if (validator.isInt(number)){
+    var numberAsInt = parseInt(number);    
+    if(number >= min && number <= max){
+      return;
+    }
   }
-  }
-return value;
+  errors.push(name + ' should be an int in the range ' + min + ' to ' + max);
 }
 
 /**
@@ -81,17 +78,14 @@ function saveEvent(request, response){
   if (validator.isLength(request.body.location, 5, 50) === false) {
     contextData.errors.push('Your location should be between 5 and 50 letters.');
   }
-var year = checkIntRange(request, 'year', 2015, 2016, contextData);
-var month = checkIntRange(request, 'month', 0, 11, contextData);
-var day = checkIntRange(request, 'day', 1, 31, contextData);
-var hour = checkIntRange(request, 'hour', 0, 23, contextData);
-var minute = checkIntRange(request, 'minute', 0, 59, contextData);
+  isRangedInt(request.body.year, 'year', allowedDateInfo.years[0], allowedDateInfo.years[allowedDateInfo.years.length-1], contextData.errors);
+  isRangedInt(request.body.month, 'month', 0, 11, contextData.errors);
+  isRangedInt(request.body.day, 'day', allowedDateInfo.days[0], allowedDateInfo.days[allowedDateInfo.days.length-1], contextData.errors);
+  isRangedInt(request.body.hour, 'hour', allowedDateInfo.hours[0], allowedDateInfo.hours[allowedDateInfo.hours.length-1], contextData.errors);
+  isRangedInt(request.body.minute, 'minute', allowedDateInfo.minutes[0], allowedDateInfo.minutes[allowedDateInfo.minutes.length-1], contextData.errors);
 
-  if (validator.isURL(request.body.image) === false) {
-    contextData.errors.push('Please put in the full URL starting with either http:// or https://.');
-  }
-  if (request.body.image.match(/\.png$/ || /\.gif$/) === false) {
-    contextData.errors.push('Please use a .png or .gif file');
+  if (!validator.isURL(request.body.image) || request.body.image.match(/\.(gif|png)$/i) === null) {
+    contextData.errors.push('Please use a proper URL with either a gif or png.');
   }
   
   if (contextData.errors.length === 0) {
